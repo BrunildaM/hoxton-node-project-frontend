@@ -17,7 +17,11 @@ export default function SignInPage() {
         </label>
       </form>
       <h3>
-        Don't have an account? <Link className="sign-up-link" to={"/Sign-Up"}>Sign Up</Link> here.
+        Don't have an account?
+        <Link className="sign-up-link" to={"/Sign-Up"}>
+          Sign Up
+        </Link>
+        chat link here: <Link to={"/chat-page"}>Chat</Link>
       </h3>
     </div>
   );

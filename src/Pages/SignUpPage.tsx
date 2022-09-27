@@ -17,10 +17,10 @@ export default function SignUpPage() {
         </label>
       </form>
       <h3>
-        Already have an account?{" "}
+        Already have an account?
         <Link className="sign-in-link" to={"/Sign-In"}>
           Log In
-        </Link>{" "}
+        </Link>
         here.
       </h3>
     </div>
