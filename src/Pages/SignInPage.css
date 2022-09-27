@@ -1,0 +1,21 @@
+.sign-in-page {
+  display: grid;
+  height: 50vh;
+  width: 30vw;
+
+  /* place-content: center; */
+  place-items: center;
+  /* font: small-caps bold 24px/1 sans-serif; */
+}
+.sign-in-title {
+  color: blanchedalmond;
+}
+.sign-in-form {
+  display: grid;
+  place-items: center;
+  font: italic small-caps bold 16px/2 cursive;
+}
+.sign-up-link {
+  color: rgb(231, 231, 231);
+  text-decoration: none;
+}

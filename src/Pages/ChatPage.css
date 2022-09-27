@@ -1,0 +1,27 @@
+.chat-page {
+  height: 50vh;
+  width: 70vw;
+  display: grid;
+  grid-template:
+    "chat-header " 120px
+    "chat-main " 1fr/
+    1fr;
+}
+.chat-header {
+  grid-area: chat-header;
+  outline: 1px black dotted;
+}
+.chat-main {
+  grid-area: chat-main;
+  outline: 1px white dotted;
+  display: grid;
+  grid-auto-flow: column;
+}
+.contacts-msg-list {
+    outline: 1px red dotted;
+}
+.coversation {
+  display: grid;
+  grid-row: auto auto;
+  
+}
