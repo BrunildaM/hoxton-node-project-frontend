@@ -1,5 +1,13 @@
+import { useEffect, useState } from "react";
 import "./ChatPage.css";
 export default function ChatPage() {
+  const [users, setUsers] = useState(null);
+  useEffect(() => {
+    fetch("http://localhost:4000/users")
+      .then((resp) => resp.json())
+      .then((usersFromServer) => setUsers(usersFromServer));
+  }, []);
+
   return (
     <div className="chat-page">
       <header className="chat-header">
@@ -18,10 +26,17 @@ export default function ChatPage() {
       <main className="chat-main">
         <div className="contacts-msg-list">
           <h3>CHATS</h3>
-          <ul>
-            <li>
-              <img src="" alt="" />
-              <span></span>
+          <ul className="contacts-list">
+            <li className="contact-item">
+              <img
+                className="contact-avatar"
+                src="https://img.freepik.com/free-vector/nature-scene-with-river-hills-forest-mountain-landscape-flat-cartoon-style-illustration_1150-37326.jpg?w=2000"
+                alt=""
+              />
+              <span className="contact-message">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. commodi
+                fugiat non praesentium magni sequi? Rerum!
+              </span>
             </li>
           </ul>
         </div>

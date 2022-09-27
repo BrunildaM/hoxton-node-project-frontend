@@ -15,13 +15,30 @@
   grid-area: chat-main;
   outline: 1px white dotted;
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns:"contacts-msg-list";
 }
 .contacts-msg-list {
-    outline: 1px red dotted;
+  outline: 1px red dotted;
 }
-.coversation {
+.contacts-list {
+  display: grid;
+}
+.conversation {
   display: grid;
   grid-row: auto auto;
-  
+}
+.contact-message {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.contact-item {
+  display: grid;
+  grid-auto-flow: column;
+  text-overflow: ellipsis;
+}
+.contact-avatar {
+  height: 30px;
+  clip-path: circle();
 }
