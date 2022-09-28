@@ -10,6 +10,10 @@ function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
   const [users, setUsers] = useState([]);
+  function token(id:number){
+
+
+  }
   function signIn(data: any) {
     fetch(`http://localhost:4000/users`)
       .then((resp) => resp.json())
@@ -32,7 +36,7 @@ function App() {
         <Route index element={<Navigate replace to="/Sign-In" />} />
         {currentUser && <Route path="/chat-page" element={<ChatPage />} />} (
         <>
-          <Route path="/Sign-Up" element={<SignUpPage />} />
+          <Route path="/Sign-Up" element={<SignUpPage signIn={signIn}/>} />
           <Route path="/Sign-In" element={<SignInPage />} />
         </>
         )
