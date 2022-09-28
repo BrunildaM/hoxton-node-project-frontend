@@ -18,6 +18,12 @@ export default function SignUpPage(signIn: any) {
               email: e.target.email.value,
               // @ts-ignore
               password: e.target.password.value,
+              // @ts-ignore
+              firstName: e.target.firstName.value,
+              // @ts-ignore
+              lastName: e.target.lastName.value,
+              // @ts-ignore
+              avatar: e.target.avatar.value,
             }),
           })
             .then((resp) => resp.json())
@@ -40,6 +46,18 @@ export default function SignUpPage(signIn: any) {
         <label htmlFor="">
           Password:
           <input type="password" name="password" />
+        </label>
+        <label htmlFor="">
+          First name:
+          <input type="password" name="firstName" />
+        </label>
+        <label htmlFor="">
+          Last name:
+          <input type="password" name="lastName" />
+        </label>
+        <label htmlFor="">
+          Avatar:
+          <input type="password" name="avatar" />
         </label>
       </form>
       <h3>

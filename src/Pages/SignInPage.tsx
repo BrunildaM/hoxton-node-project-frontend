@@ -1,7 +1,7 @@
 import "./SignInPage.css";
 import { Link } from "react-router-dom";
 
-export default function SignInPage() {
+export default function SignInPage(signIn: any) {
   return (
     <div className="sign-in-page">
       <h1 className="sign-in-title">Hi App</h1>

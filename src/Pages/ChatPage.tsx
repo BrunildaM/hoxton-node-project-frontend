@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { User } from "../types";
 import "./ChatPage.css";
-export default function ChatPage() {
+
+export default function ChatPage(currentUser: User) {
   const [users, setUsers] = useState(null);
   useEffect(() => {
     fetch("http://localhost:4000/users")
