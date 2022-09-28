@@ -11,7 +11,7 @@ function App() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-  function token(id: number) {}
+  
   function signIn(data: any) {
     setCurrentUser(data.user);
     localStorage.token = data.token;
@@ -25,7 +25,7 @@ function App() {
             path="/chat-page"
             element={<ChatPage currentUser={currentUser} />}
           />
-        )}{" "}
+        )}
         (
         <>
           <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
