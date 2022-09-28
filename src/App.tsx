@@ -13,6 +13,10 @@ function App() {
     setCurrentUser(data.user);
     localStorage.token = data.token;
   }
+
+  function sendMessage(data: any) {
+    setCurrentUser(data.user.messages);
+  }
   useEffect(() => {
     if (localStorage.token) {
       fetch("http://localhost:4000/validate", {
@@ -35,7 +39,12 @@ function App() {
     <div className="App">
       <Routes>
         <Route index element={<Navigate replace to="/Sign-In" />} />
-        <Route path="/chat-page" element={<ChatPage currentUser={currentUser} />}/>
+        <Route
+          path="/chat-page"
+          element={
+            <ChatPage currentUser={currentUser} sendMessage={sendMessage} />
+          }
+        />
         <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
         <Route path="/Sign-In" element={<SignInPage signIn={signIn} />} />
       </Routes>

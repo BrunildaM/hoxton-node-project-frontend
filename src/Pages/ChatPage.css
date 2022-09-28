@@ -25,9 +25,12 @@
 }
 .conversation {
   display: grid;
-  grid-row: auto auto;
+  grid-template:
+    "conversation-messages " 1fr
+    "conversation-form " 30px/
+    1fr;
 }
-.contact-message {
+.contact-notification {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -41,4 +44,22 @@
 .contact-avatar {
   height: 30px;
   clip-path: circle();
+}
+.conversation-messages {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.contact-message-content {
+  background-color: aquamarine;
+}
+
+.my-message-content {
+  background-color: rgb(253, 255, 127);
+}
+
+.conversation-form {
+  outline: 1px solid black;
+
+  align-self: flex-end;
 }
