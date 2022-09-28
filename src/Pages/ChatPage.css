@@ -15,7 +15,7 @@
   grid-area: chat-main;
   outline: 1px white dotted;
   display: grid;
-  grid-template-columns:"contacts-msg-list";
+  grid-template-columns: 0.5fr 0.5fr;
 }
 .contacts-msg-list {
   outline: 1px red dotted;
