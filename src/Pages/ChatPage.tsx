@@ -14,7 +14,8 @@ export default function ChatPage(currentUser: User) {
     <div className="chat-page">
       <header className="chat-header">
         <div>
-          <h1>Hi App</h1>
+          <h1>HiApp</h1>
+
           <form action="">
             <input
               type="text"

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 
 import "./App.css";
@@ -8,30 +8,36 @@ import SignUpPage from "./Pages/SignUpPage";
 import { User } from "./types";
 
 function App() {
-  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-
-  
   function signIn(data: any) {
     setCurrentUser(data.user);
     localStorage.token = data.token;
   }
+  useEffect(() => {
+    if (localStorage.token) {
+      fetch("http://localhost:4000/validate", {
+        headers: {
+          Authorization: localStorage.token,
+        },
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+          if (data.error) {
+            alert(data.error);
+            console.log(data);
+          } else {
+            signIn(data.token);
+          }
+        });
+    }
+  }, []);
   return (
     <div className="App">
       <Routes>
         <Route index element={<Navigate replace to="/Sign-In" />} />
-        {currentUser && (
-          <Route
-            path="/chat-page"
-            element={<ChatPage currentUser={currentUser} />}
-          />
-        )}
-        (
-        <>
-          <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
-          <Route path="/Sign-In" element={<SignInPage signIn={signIn} />} />
-        </>
-        )
+        <Route path="/chat-page" element={<ChatPage currentUser={currentUser} />}/>
+        <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
+        <Route path="/Sign-In" element={<SignInPage signIn={signIn} />} />
       </Routes>
     </div>
   );

@@ -1,5 +1,6 @@
 import "./SignUpPage.css";
 import { Link } from "react-router-dom";
+import { User } from "../types";
 
 export default function SignUpPage(signIn: any) {
   return (
@@ -41,24 +42,25 @@ export default function SignUpPage(signIn: any) {
         <h2>Sign Up</h2>
         <label htmlFor="">
           Email:
-          <input type="email" name="email" />
+          <input type="email" name="email" required />
         </label>
         <label htmlFor="">
           Password:
-          <input type="password" name="password" />
+          <input type="password" name="password" required />
         </label>
         <label htmlFor="">
           First name:
-          <input type="password" name="firstName" />
+          <input type="password" name="firstName" required />
         </label>
         <label htmlFor="">
           Last name:
-          <input type="password" name="lastName" />
+          <input type="password" name="lastName" required />
         </label>
         <label htmlFor="">
           Avatar:
-          <input type="password" name="avatar" />
+          <input type="password" name="avatar" required />
         </label>
+        <button>SIGN UP</button>
       </form>
       <h3>
         Already have an account?
