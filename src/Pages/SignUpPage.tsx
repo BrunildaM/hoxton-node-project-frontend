@@ -9,7 +9,7 @@ export default function SignUpPage(signIn: any) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          fetch("http://localhost:4000/sign-up", {
+          fetch("http://localhost:5000/sign-up", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -33,8 +33,10 @@ export default function SignUpPage(signIn: any) {
               // data = {user,token}
               if (data.error) {
                 alert(data.error);
+                console.log(data)
               } else {
-                signIn(data);
+                signIn(data.user);
+                
               }
             });
         }}
