@@ -35,7 +35,7 @@ export default function SignUpPage(signIn: any) {
                 alert(data.error);
                 console.log(data)
               } else {
-                signIn(data.user);
+                signIn(data);
                 
               }
             });

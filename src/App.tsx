@@ -11,7 +11,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   function signIn(data: any) {
-    setCurrentUser(data);
+    setCurrentUser(data.user);
     localStorage.token = data.token;
   }
 
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.token) {
-      fetch("http://localhost:4000/validate", {
+      fetch("http://localhost:5000/validate", {
         headers: {
           Authorization: localStorage.token,
         },
@@ -37,7 +37,6 @@ function App() {
         });
     }
   }, []);
-
 
   return (
     <div className="App">
