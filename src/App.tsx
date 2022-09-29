@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.token) {
-      fetch("http://localhost:5000/validate", {
+      fetch("http://localhost:4000/validate", {
         headers: {
           Authorization: localStorage.token,
         },
