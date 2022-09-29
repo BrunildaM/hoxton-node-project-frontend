@@ -7,9 +7,10 @@ type Props = {
   currentUser: User | null;
   sendMessage: (data: any) => void;
 };
+
 export default function ChatPage({ sendMessage, currentUser }: Props) {
   const [users, setUsers] = useState<User[]>([]);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [socket, setSocket] = useState<any>(null);
 
   useEffect(() => {
@@ -47,26 +48,28 @@ export default function ChatPage({ sendMessage, currentUser }: Props) {
         <div className="contacts-msg-list">
           <h3>CHATS</h3>
           <ul className="contacts-list">
-            
-              <li className="contact-item">
-                <img className="contact-avatar" src="" />
-                <span className="contact-notification">
-                  {/* {user.messages?.[messages.length - 1].content} */}
-                </span>
-              </li>
-            
+            <li className="contact-item">
+              <img className="contact-avatar" src="" />
+              <span className="contact-notification">
+                {/* {user.messages?.[messages.length - 1].content} */}
+              </span>
+            </li>
           </ul>
         </div>
         <div className="conversation">
           <div className="conversation-messages">
             <div className="contact-messages">
               <ul>
-                <li className="contact-message-content">sender messages</li>
+                <li className="contact-message-content">
+                  {messages.map((msg) => msg.content)}
+                </li>
               </ul>
             </div>
             <div className="my-messages">
               <ul>
-                <li className="my-message-content">receiver messages</li>
+                <li className="my-message-content">
+                  {messages.map((msg) => msg.content)}
+                </li>
               </ul>
             </div>
           </div>
