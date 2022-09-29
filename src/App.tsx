@@ -9,8 +9,10 @@ import { User } from "./types";
 
 function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  
+  
   function signIn(data: any) {
-    setCurrentUser(data.user);
+    setCurrentUser(data);
     localStorage.token = data.token;
   }
 

@@ -1,8 +1,10 @@
 import "./SignInPage.css";
 import { Link } from "react-router-dom";
 import { User } from "../types";
-
-export default function SignInPage(signIn: any) {
+type Prop = {
+  signIn: (data:object) => void;
+};
+export default function SignInPage({signIn}: Prop) {
   return (
     <div className="sign-in-page">
       <h1 className="sign-in-title">Hi App</h1>
@@ -19,7 +21,6 @@ export default function SignInPage(signIn: any) {
               email: e.target.email.value,
               // @ts-ignore
               password: e.target.password.value,
-              
             }),
           })
             .then((resp) => resp.json())
@@ -48,7 +49,7 @@ export default function SignInPage(signIn: any) {
           Password:
           <input type="text" placeholder="password" name="password" required />
         </label>
-       
+
         <button>SIGN IN</button>
       </form>
       <h3>
