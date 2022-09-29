@@ -1,5 +1,5 @@
 import "./SignInPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User } from "../types";
 
 type Props = {
@@ -7,6 +7,8 @@ type Props = {
 };
 
 export default function SignInPage({ signIn }: Props) {
+  const navigate = useNavigate()
+
   return (
     <div className="sign-in-page">
       <h1 className="sign-in-title">Hi App</h1>
@@ -33,6 +35,7 @@ export default function SignInPage({ signIn }: Props) {
                 console.log(data.error);
               } else {
                 signIn(data);
+                navigate('/chat-page')
               }
             });
         }}

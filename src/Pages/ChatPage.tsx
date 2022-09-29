@@ -10,7 +10,7 @@ export default function ChatPage({ sendMessage }: Props) {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/users")
+    fetch("http://localhost:5000/users")
       .then((resp) => resp.json())
       .then((usersFromServer) => setUsers(usersFromServer));
   }, []);
@@ -39,7 +39,7 @@ export default function ChatPage({ sendMessage }: Props) {
               <li className="contact-item">
                 <img className="contact-avatar" src={user.avatar} />
                 <span className="contact-notification">
-                  {user.messages?.[messages.length - 1].content}
+                  {/* {user.messages?.[messages.length - 1].content} */}
                 </span>
               </li>
             ))}
@@ -61,7 +61,7 @@ export default function ChatPage({ sendMessage }: Props) {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              fetch("http://localhost:4000/post-message", {
+              fetch("http://localhost:5000/messages", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

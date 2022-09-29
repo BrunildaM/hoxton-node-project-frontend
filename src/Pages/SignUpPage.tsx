@@ -2,14 +2,18 @@ import "./SignUpPage.css";
 import { Link } from "react-router-dom";
 import { User } from "../types";
 
-export default function SignUpPage(signIn: any) {
+type Props = {
+  signIn: (data: any) =>  void
+}
+
+export default function SignUpPage({signIn}: Props) {
   return (
     <div className="sign-up-page">
       <h1 className="sign-up-title">Hi App</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          fetch("http://localhost:4000/sign-up", {
+          fetch("http://localhost:5000/sign-up", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -68,7 +72,7 @@ export default function SignUpPage(signIn: any) {
       </form>
       <h3>
         Already have an account?
-        <Link className="sign-in-link" to={"/Sign-In"}>
+        <Link className="sign-in-link" to={"/LogIn"}>
           Log In
         </Link>
         here.

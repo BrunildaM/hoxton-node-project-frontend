@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 
 import "./App.css";
 import ChatPage from "./Pages/ChatPage";
-import SignInPage from "./Pages/SignInPage";
+import { LogIn } from "./Pages/LogIn";
 import SignUpPage from "./Pages/SignUpPage";
 import { User } from "./types";
 
@@ -41,18 +41,17 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route index element={<Navigate replace to="/Sign-In" />} />
-        {currentUser ? (
+        <Route index element={<Navigate replace to="/LogIn" />} />
+        
           <Route
             path="/chat-page"
             element={<ChatPage sendMessage={sendMessage} />}
           />
-        ) : (
-          <>
-            <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
-            <Route path="/Sign-In" element={<SignInPage signIn={signIn} />} />
-          </>
-        )}
+       
+        
+            <Route path="/LogIn" element={<LogIn signIn={signIn} />} />
+        
+        <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
       </Routes>
     </div>
   );
