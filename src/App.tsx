@@ -9,6 +9,8 @@ import { User } from "./types";
 
 function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+
   function signIn(data: any) {
     setCurrentUser(data.user);
     localStorage.token = data.token;
@@ -36,6 +38,8 @@ function App() {
         });
     }
   }, []);
+
+  
   return (
     <div className="App">
       <Routes>

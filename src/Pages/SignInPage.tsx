@@ -2,7 +2,11 @@ import "./SignInPage.css";
 import { Link } from "react-router-dom";
 import { User } from "../types";
 
-export default function SignInPage(signIn: any) {
+type Props = {
+  signIn: (data: any) => void
+}
+
+export default function SignInPage({signIn} : Props) {
   return (
     <div className="sign-in-page">
       <h1 className="sign-in-title">Hi App</h1>
@@ -35,18 +39,18 @@ export default function SignInPage(signIn: any) {
         className="sign-in-form"
       >
         <h2>Sign In</h2>
-        <label htmlFor="">
+        <label>
           Email:
           <input
-            type="text"
-            placeholder="write your email here"
+            type="email"
+            placeholder="Email"
             name="email"
             required
           />
         </label>
-        <label htmlFor="">
+        <label>
           Password:
-          <input type="text" placeholder="password" name="password" required />
+          <input type="password" placeholder="password" name="password" required />
         </label>
        
         <button>SIGN IN</button>
@@ -56,7 +60,7 @@ export default function SignInPage(signIn: any) {
         <Link className="sign-up-link" to={"/Sign-Up"}>
           Sign Up
         </Link>
-        chat link here: <Link to={"/chat-page"}>Chat</Link>
+        {/* chat link here: <Link to={"/chat-page"}>Chat</Link> */}
       </h3>
     </div>
   );
