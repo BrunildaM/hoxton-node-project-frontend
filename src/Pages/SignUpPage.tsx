@@ -25,6 +25,7 @@ export default function SignUpPage(signIn: any) {
               lastName: e.target.lastName.value,
               // @ts-ignore
               avatar: e.target.avatar.value,
+              
             }),
           })
             .then((resp) => resp.json())
@@ -60,6 +61,7 @@ export default function SignUpPage(signIn: any) {
           Avatar:
           <input type="password" name="avatar" required />
         </label>
+        
         <button>SIGN UP</button>
       </form>
       <h3>

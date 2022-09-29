@@ -5,7 +5,7 @@ export type User = {
   avatar: string;
   lastName: string;
   firstName: string;
-  messages?: Message[];
+  messages?: Message[] | undefined;
   participants?: Participant[];
   rooms?: Room[];
 };

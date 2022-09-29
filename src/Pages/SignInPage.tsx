@@ -19,6 +19,7 @@ export default function SignInPage(signIn: any) {
               email: e.target.email.value,
               // @ts-ignore
               password: e.target.password.value,
+              
             }),
           })
             .then((resp) => resp.json())
@@ -47,6 +48,7 @@ export default function SignInPage(signIn: any) {
           Password:
           <input type="text" placeholder="password" name="password" required />
         </label>
+       
         <button>SIGN IN</button>
       </form>
       <h3>

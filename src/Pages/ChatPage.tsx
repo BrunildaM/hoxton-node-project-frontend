@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { Message, User } from "../types";
 import "./ChatPage.css";
-
-export default function ChatPage(currentUser: User, sendMessage: any) {
-  const [users, setUsers] = useState(null);
+type Props = {
+  
+  sendMessage: (data: any) => void;
+};
+export default function ChatPage({ sendMessage }: Props) {
+  const [users, setUsers] = useState<User[]>([]);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:4000/users")
@@ -31,17 +35,14 @@ export default function ChatPage(currentUser: User, sendMessage: any) {
         <div className="contacts-msg-list">
           <h3>CHATS</h3>
           <ul className="contacts-list">
-            <li className="contact-item">
-              <img
-                className="contact-avatar"
-                src="https://img.freepik.com/free-vector/nature-scene-with-river-hills-forest-mountain-landscape-flat-cartoon-style-illustration_1150-37326.jpg?w=2000"
-                alt=""
-              />
-              <span className="contact-notification">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. commodi
-                fugiat non praesentium magni sequi? Rerum!
-              </span>
-            </li>
+            {users.map((user) => (
+              <li className="contact-item">
+                <img className="contact-avatar" src={user.avatar} />
+                <span className="contact-notification">
+                  {user.messages?.[messages.length - 1].content}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="conversation">
