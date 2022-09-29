@@ -6,6 +6,7 @@
     "chat-header " 120px
     "chat-main " 1fr/
     1fr;
+    overflow: scroll;
 }
 .chat-header {
   grid-area: chat-header;
@@ -13,15 +14,17 @@
 }
 .chat-main {
   grid-area: chat-main;
-  outline: 1px white dotted;
+  
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;
 }
 .contacts-msg-list {
-  outline: 1px red dotted;
+  
+  overflow: scroll;
 }
 .contacts-list {
   display: grid;
+  overflow: scroll;
 }
 .conversation {
   display: grid;
