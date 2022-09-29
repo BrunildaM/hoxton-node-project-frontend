@@ -2,13 +2,11 @@ import "./SignInPage.css";
 import { Link } from "react-router-dom";
 import { User } from "../types";
 
-
 type Props = {
-  signIn: (data: any) => void
-}
+  signIn: (data: any) => void;
+};
 
-export default function SignInPage({signIn} : Props) {
-
+export default function SignInPage({ signIn }: Props) {
   return (
     <div className="sign-in-page">
       <h1 className="sign-in-title">Hi App</h1>
@@ -32,6 +30,7 @@ export default function SignInPage({signIn} : Props) {
               // data = {user,token}
               if (data.error) {
                 alert(data.error);
+                console.log(data.error);
               } else {
                 signIn(data);
               }
@@ -42,16 +41,16 @@ export default function SignInPage({signIn} : Props) {
         <h2>Sign In</h2>
         <label>
           Email:
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            required
-          />
+          <input type="email" placeholder="Email" name="email" required />
         </label>
         <label>
           Password:
-          <input type="password" placeholder="password" name="password" required />
+          <input
+            type="password"
+            placeholder="password"
+            name="password"
+            required
+          />
         </label>
 
         <button>SIGN IN</button>

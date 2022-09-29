@@ -21,9 +21,9 @@ function App() {
 
   useEffect(() => {
     if (localStorage.token) {
-      fetch("http://localhost:4000/validate", {
+      fetch("http://localhost:5000/validate", {
         headers: {
-          Authorization: localStorage.token,
+          "Authorization": localStorage.token,
         },
       })
         .then((resp) => resp.json())
@@ -32,7 +32,7 @@ function App() {
             alert(data.error);
             console.log(data);
           } else {
-            signIn(data.token);
+            signIn(data);
           }
         });
     }
@@ -42,12 +42,17 @@ function App() {
     <div className="App">
       <Routes>
         <Route index element={<Navigate replace to="/Sign-In" />} />
-        <Route
-          path="/chat-page"
-          element={<ChatPage sendMessage={sendMessage} />}
-        />
-        <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
-        <Route path="/Sign-In" element={<SignInPage signIn={signIn} />} />
+        {currentUser ? (
+          <Route
+            path="/chat-page"
+            element={<ChatPage sendMessage={sendMessage} />}
+          />
+        ) : (
+          <>
+            <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
+            <Route path="/Sign-In" element={<SignInPage signIn={signIn} />} />
+          </>
+        )}
       </Routes>
     </div>
   );
