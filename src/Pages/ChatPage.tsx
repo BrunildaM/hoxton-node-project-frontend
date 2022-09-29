@@ -47,14 +47,14 @@ export default function ChatPage({ sendMessage, currentUser }: Props) {
         <div className="contacts-msg-list">
           <h3>CHATS</h3>
           <ul className="contacts-list">
-            {users.map((user) => (
+            
               <li className="contact-item">
-                <img className="contact-avatar" src={user.avatar} />
+                <img className="contact-avatar" src="" />
                 <span className="contact-notification">
                   {/* {user.messages?.[messages.length - 1].content} */}
                 </span>
               </li>
-            ))}
+            
           </ul>
         </div>
         <div className="conversation">
