@@ -1,5 +1,5 @@
 import "./SignUpPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User } from "../types";
 
 type Props = {
@@ -7,6 +7,7 @@ type Props = {
 }
 
 export default function SignUpPage({signIn}: Props) {
+  const navigate = useNavigate()
   return (
     <div className="sign-up-page">
       <h1 className="sign-up-title">Hi App</h1>
@@ -57,18 +58,21 @@ export default function SignUpPage({signIn}: Props) {
         </label>
         <label htmlFor="">
           First name:
-          <input type="password" name="firstName" required />
+          <input type="text" name="firstName" required />
         </label>
         <label htmlFor="">
           Last name:
-          <input type="password" name="lastName" required />
+          <input type="text" name="lastName" required />
         </label>
         <label htmlFor="">
           Avatar:
-          <input type="password" name="avatar" required />
+          <input type="text" name="avatar" required />
         </label>
         
-        <button>SIGN UP</button>
+        <button onClick = {() => {
+          navigate('/chat-page')
+
+        }}>SIGN UP</button>
       </form>
       <h3>
         Already have an account?

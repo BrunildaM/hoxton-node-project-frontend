@@ -20,7 +20,9 @@ function App() {
     setCurrentUser(data.user.messages);
   }
 
-
+  function logOut () {
+    setCurrentUser(null)
+  }
 
   useEffect(() => {
     if (localStorage.token) {

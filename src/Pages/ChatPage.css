@@ -7,6 +7,8 @@
     "chat-main " 1fr/
     1fr;
     /* overflow: scroll; */
+    background-color: rgba(0, 0, 0, 0.575);
+    
 }
 .chat-header {
   grid-area: chat-header;
@@ -18,10 +20,10 @@
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;
 }
-.contacts-msg-list {
+/* .contacts-msg-list {
   
-  /* overflow: scroll; */
-}
+  overflow: scroll;
+} */
 .contacts-list {
   display: grid;
   /* overflow: scroll; */
@@ -65,4 +67,14 @@
   outline: 1px solid black;
 
   align-self: flex-end;
+}
+
+.header {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+
+.header h1 {
+  margin: 0;
 }
