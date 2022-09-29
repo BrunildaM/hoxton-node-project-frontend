@@ -50,13 +50,13 @@ function App() {
         <Route
           path="/chat-page"
           element={
-            <ChatPage currentUser={currentUser} sendMessage={sendMessage} />
+            <ChatPage currentUser={currentUser} logOut={logOut} />
           }
         />
         <Route
           path="/chat-page/:roomId"
           element={
-            <ChatPage currentUser={currentUser} sendMessage={sendMessage} />
+            <ChatPage currentUser={currentUser} logOut={logOut} />
           }
         />
         <Route path="/LogIn" element={<LogIn signIn={signIn} />} />
