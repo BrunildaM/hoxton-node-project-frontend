@@ -23,7 +23,7 @@ function App() {
     if (localStorage.token) {
       fetch("http://localhost:5000/validate", {
         headers: {
-          "Authorization": localStorage.token,
+          Authorization: localStorage.token,
         },
       })
         .then((resp) => resp.json())
@@ -42,15 +42,16 @@ function App() {
     <div className="App">
       <Routes>
         <Route index element={<Navigate replace to="/LogIn" />} />
-        
-          <Route
-            path="/chat-page"
-            element={<ChatPage sendMessage={sendMessage} />}
-          />
-       
-        
-            <Route path="/LogIn" element={<LogIn signIn={signIn} />} />
-        
+
+        <Route
+          path="/chat-page"
+          element={
+            <ChatPage currentUser={currentUser} sendMessage={sendMessage} />
+          }
+        />
+
+        <Route path="/LogIn" element={<LogIn signIn={signIn} />} />
+
         <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
       </Routes>
     </div>

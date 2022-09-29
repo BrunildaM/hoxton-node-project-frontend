@@ -1,13 +1,25 @@
 import { useEffect, useState } from "react";
 import { Message, User } from "../types";
 import "./ChatPage.css";
+import io from "socket.io-client";
+
 type Props = {
-  
+  currentUser: User | null;
   sendMessage: (data: any) => void;
 };
-export default function ChatPage({ sendMessage }: Props) {
+export default function ChatPage({ sendMessage, currentUser }: Props) {
   const [users, setUsers] = useState<User[]>([]);
   const [messages, setMessages] = useState([]);
+  const [socket, setSocket] = useState<any>(null);
+
+  useEffect(() => {
+    const socket = io("ws://localhost:4555");
+    setSocket(socket);
+    console.log(socket);
+    socket.on("message", (messages) => {
+      setMessages(messages);
+    });
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:5000/users")
@@ -61,25 +73,16 @@ export default function ChatPage({ sendMessage }: Props) {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              fetch("http://localhost:5000/messages", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  // @ts-ignore
-                  message: e.target.message.value,
-                }),
-              })
-                .then((resp) => resp.json())
-                .then((data) => {
-                  // data = {user,token}
-                  if (data.error) {
-                    alert(data.error);
-                  } else {
-                    sendMessage(data);
-                  }
+              //@ts-ignore
+              if (e.target.message.value) {
+                socket.emit("message", {
+                  //@ts-ignore
+                  content: e.target.message.value,
+                  user: currentUser,
                 });
+                //@ts-ignore
+                e.target.message.value = "";
+              }
             }}
             className="conversation-form"
             action=""

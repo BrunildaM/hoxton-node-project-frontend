@@ -1,13 +1,26 @@
 import "./SignInPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "../types";
+import { useEffect, useState } from "react";
+import io from "socket.io-client";
 
 type Props = {
   signIn: (data: any) => void;
 };
 
 export default function SignInPage({ signIn }: Props) {
-  const navigate = useNavigate()
+  
+  const navigate = useNavigate();
+  const [messages, setMessages] = useState([]);
+  const [socket, setSocket] = useState<any>(null);
+  useEffect(() => {
+    const socket = io("ws://localhost:4555");
+    setSocket(socket);
+    console.log(socket);
+    socket.on("message", (messages) => {
+      setMessages(messages);
+    });
+  }, []);
 
   return (
     <div className="sign-in-page">
@@ -35,7 +48,7 @@ export default function SignInPage({ signIn }: Props) {
                 console.log(data.error);
               } else {
                 signIn(data);
-                navigate('/chat-page')
+                navigate("/chat-page");
               }
             });
         }}
