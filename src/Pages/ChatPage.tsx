@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Message, User } from "../types";
 import "./ChatPage.css";
 import io from "socket.io-client";
+import { useParams } from "react-router-dom";
 
 type Props = {
   currentUser: User | null;
@@ -9,8 +10,12 @@ type Props = {
 };
 
 export default function ChatPage({ sendMessage, currentUser }: Props) {
+  const params = useParams()
+
+
   const [users, setUsers] = useState<User[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [room, setRoom] = useState([])
   const [socket, setSocket] = useState<any>(null);
 
   useEffect(() => {
@@ -32,9 +37,9 @@ export default function ChatPage({ sendMessage, currentUser }: Props) {
     <div className="chat-page">
       <header className="chat-header">
         <div>
-          <h1>HiApp</h1>
+          <h1>HiApp  <img className="logo" src="https://play-lh.googleusercontent.com/jI-MNIYkb1QXGrgNoSiuRn8PdBRrqd-cW3krfuhoSr0HH-w-Gu40C0BFwlNfYekhMC4" alt="" /></h1>
 
-          <form action="">
+          <form >
             <input
               type="text"
               name=""
@@ -56,6 +61,8 @@ export default function ChatPage({ sendMessage, currentUser }: Props) {
             </li>
           </ul>
         </div>
+
+        { params.roomId ? (
         <div className="conversation">
           <div className="conversation-messages">
             <div className="contact-messages">
@@ -93,7 +100,9 @@ export default function ChatPage({ sendMessage, currentUser }: Props) {
             <button>Send</button>
             <input type="text" placeholder="Say Hi" name="message" />
           </form>
+        
         </div>
+         ) : null }
       </main>
     </div>
   );

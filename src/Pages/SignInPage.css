@@ -1,7 +1,10 @@
 .sign-in-page {
   display: grid;
-  height: 50vh;
+  /* height: 50vh; */
   width: 30vw;
+  background-color: rgba(0, 0, 0, 0.56);
+  border-radius: 10px;
+ 
 
   /* place-content: center; */
   place-items: center;
@@ -9,13 +12,21 @@
 }
 .sign-in-title {
   color: blanchedalmond;
+  
 }
 .sign-in-form {
   display: grid;
   place-items: center;
   font: italic small-caps bold 16px/2 cursive;
 }
+
 .sign-up-link {
   color: rgb(231, 231, 231);
   text-decoration: none;
+}
+
+.logo {
+  width: 100px;
+  border-radius: 20px;
+ 
 }

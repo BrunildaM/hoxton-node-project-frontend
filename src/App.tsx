@@ -4,6 +4,7 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import ChatPage from "./Pages/ChatPage";
 import { LogIn } from "./Pages/LogIn";
+import NotFound from "./Pages/NotFound";
 import SignUpPage from "./Pages/SignUpPage";
 import { User } from "./types";
 
@@ -19,6 +20,8 @@ function App() {
     setCurrentUser(data.user.messages);
   }
 
+
+
   useEffect(() => {
     if (localStorage.token) {
       fetch("http://localhost:5000/validate", {
@@ -30,7 +33,7 @@ function App() {
         .then((data) => {
           if (data.error) {
             alert(data.error);
-            console.log(data);
+            // console.log(data);
           } else {
             signIn(data);
           }
@@ -42,17 +45,21 @@ function App() {
     <div className="App">
       <Routes>
         <Route index element={<Navigate replace to="/LogIn" />} />
-
         <Route
           path="/chat-page"
           element={
             <ChatPage currentUser={currentUser} sendMessage={sendMessage} />
           }
         />
-
+        <Route
+          path="/chat-page/:roomId"
+          element={
+            <ChatPage currentUser={currentUser} sendMessage={sendMessage} />
+          }
+        />
         <Route path="/LogIn" element={<LogIn signIn={signIn} />} />
-
         <Route path="/Sign-Up" element={<SignUpPage signIn={signIn} />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

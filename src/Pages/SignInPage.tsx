@@ -24,7 +24,7 @@ export default function SignInPage({ signIn }: Props) {
 
   return (
     <div className="sign-in-page">
-      <h1 className="sign-in-title">Hi App</h1>
+      <h1 className="sign-in-title">Hi App <img className="logo" src="https://play-lh.googleusercontent.com/jI-MNIYkb1QXGrgNoSiuRn8PdBRrqd-cW3krfuhoSr0HH-w-Gu40C0BFwlNfYekhMC4" alt="" /></h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();

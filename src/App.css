@@ -1,6 +1,8 @@
 .App {
   height: 100vh;
   display: grid;
-  background-color: rgb(72, 86, 150);
+  /* background-color: rgb(72, 86, 150); */
+  background-image:url(https://img.freepik.com/free-vector/character-illustration-people_53876-64628.jpg?w=2000) ;
+  background-size: cover;
   place-content: center;
 }
