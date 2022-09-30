@@ -123,12 +123,12 @@ console.log("rooms:", rooms)
           </li>
 
           {rooms.map(room => {
-            const friendId =
+            const participantId =
               currentUser.id === room.userId
                 ? room.participantId
                 : room.userId
 
-            const friend = users.find(user => user.id === friendId)
+            const participant = users.find(user => user.id === participantId)
 
             return (
               <li key={room.id}>
@@ -136,19 +136,24 @@ console.log("rooms:", rooms)
                   className='chat-button'
                   onClick={() => navigate(`/chat-page/${room.id}`)}
                 >
-                  <img
-                    className='avatar'
-                    height='50'
-                    width='50'
-                    alt=''
-                    src={friend?.avatar}
-                  />
-                  <div>
-                    <h3>
-                      {friend?.firstName} {friend?.lastName}
-                    </h3>
-                    <p>CLick to check messages</p>
-                  </div>
+                   
+                      
+                          <img
+                          className='avatar'
+                          height='50'
+                          width='50'
+                          alt=''
+                          src= "https://www.freeiconspng.com/thumbs/live-chat-icon/live-chat-icon-27.png"
+                        />
+                        <div>
+                          <h3>
+                            Contact
+                          </h3>
+                          <p>CLick to check messages</p>
+                        </div>
+                    
+                   
+                
                 </button>
               </li>
             )

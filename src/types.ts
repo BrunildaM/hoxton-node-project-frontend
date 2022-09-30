@@ -31,6 +31,6 @@ export type Participant = {
   id: number;
   room?: Room;
   roomId: number;
-  user?: User;
+  user: User;
   userId: number;
 };
