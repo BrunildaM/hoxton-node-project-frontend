@@ -16,6 +16,7 @@ type Props = {
 
 function Main ({currentUser, users, modal, setModal, logOut}: Props) {
   const [rooms, setRooms] = useState<Room[]>([])
+
 //   const [messages, setMessages] = useState<Message[]>([]);
 //   const [socket, setSocket] = useState<any>(null);
   const params = useParams()
@@ -41,7 +42,10 @@ function Main ({currentUser, users, modal, setModal, logOut}: Props) {
           setRooms(rooms)
         
         })
-  }, [currentUser])
+  }, [])
+
+
+ 
 
 //   useEffect(() => {
 //     const socket = io("ws://localhost:4555");

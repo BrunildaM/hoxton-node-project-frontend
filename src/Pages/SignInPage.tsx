@@ -11,16 +11,16 @@ type Props = {
 export default function SignInPage({ signIn }: Props) {
   
   const navigate = useNavigate();
-  const [messages, setMessages] = useState([]);
-  const [socket, setSocket] = useState<any>(null);
-  useEffect(() => {
-    const socket = io("ws://localhost:4555");
-    setSocket(socket);
-    console.log(socket);
-    socket.on("message", (messages) => {
-      setMessages(messages);
-    });
-  }, []);
+  // const [messages, setMessages] = useState([]);
+  // const [socket, setSocket] = useState<any>(null);
+  // useEffect(() => {
+  //   const socket = io("ws://localhost:4555");
+  //   setSocket(socket);
+  //   console.log(socket);
+  //   socket.on("message", (messages) => {
+  //     setMessages(messages);
+  //   });
+  // }, []);
 
   return (
     <div className="sign-in-page">

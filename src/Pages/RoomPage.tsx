@@ -11,6 +11,7 @@ type Props = {
 
 function RoomPage ({ currentUser }: Props) {
   const [currentRoom, setCurrentRoom] = useState<Room | null>(null)
+  // const [search, setSearch] = useState("");
 
   const params = useParams()
 
@@ -49,11 +50,25 @@ function RoomPage ({ currentUser }: Props) {
 
   if (currentRoom === null) return <h1>Loading...</h1>
 
+//   const filteredMessages = currentRoom.messages.filter((message) =>
+//   message.content.toLowerCase().includes(search.toLowerCase())
+// );
+
   return (
     <main className='conversation'>
       <header className='panel'></header>
 
       <ul className='conversation__messages'>
+      {/* <form className='aside__search-container'>
+          <input
+            type='search'
+            name='messagesSearch'
+            placeholder='Search chats'
+            onChange={(filteredMessages) => {
+                setSearch(filteredMessages.target.value);
+              }}
+          />
+        </form> */}
         {currentRoom.messages.map(message => (
           <MessageData
             key={message.id}
