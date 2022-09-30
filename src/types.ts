@@ -20,10 +20,11 @@ export type Message = {
 
 export type Room = {
   id: number;
-  messages?: Message[];
+  messages: Message[];
   participants?: Participant[];
   User?: User;
   userId: number;
+  participantId: number
 };
 
 export type Participant = {

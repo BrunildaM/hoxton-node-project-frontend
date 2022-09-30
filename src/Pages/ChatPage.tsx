@@ -25,9 +25,9 @@ export default function ChatPage({ logOut, currentUser }: Props) {
   const params = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (currentUser === null) navigate("/");
-  }, [currentUser, navigate]);
+  // useEffect(() => {
+  //   if (currentUser === null) navigate("/");
+  // }, [currentUser, navigate]);
 
   useEffect(() => {
     const socket = io("ws://localhost:4555");
@@ -38,29 +38,29 @@ export default function ChatPage({ logOut, currentUser }: Props) {
     });
   }, []);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/users")
-  //     .then((resp) => resp.json())
-  //     .then((usersFromServer) => setUsers(usersFromServer));
-  // }, []);
-
   useEffect(() => {
-    if (currentUser === null) return;
-
-    fetch(`http://localhost:5000/rooms/${currentUser.id}`)
+    fetch("http://localhost:5000/users")
       .then((resp) => resp.json())
-      .then((conversations) => setRooms(conversations));
-  }, [currentUser]);
+      .then((usersFromServer) => setUsers(usersFromServer));
+  }, []);
 
-  const usersWithNoConv = users.filter((user) => {
-    if (currentUser && user.id === currentUser.id) return false;
+  // useEffect(() => {
+  //   if (currentUser === null) return;
 
-    for (const room of rooms) {
-      if (room.user.id === user.id) return false;
-      if (room.participant.id === user.id) return false;
-    }
-    return true;
-  });
+  //   fetch(`http://localhost:5000/rooms/${currentUser.id}`)
+  //     .then((resp) => resp.json())
+  //     .then((conversations) => setRooms(conversations));
+  // }, [currentUser]);
+
+  // const usersWithNoConv = users.filter((user) => {
+  //   if (currentUser && user.id === currentUser.id) return false;
+
+  //   for (const room of rooms) {
+  //     if (room.user.id === user.id) return false;
+  //     if (room.participant.id === user.id) return false;
+  //   }
+  //   return true;
+  // });
 
   
 
@@ -117,19 +117,7 @@ export default function ChatPage({ logOut, currentUser }: Props) {
 
 
           <ul>
-          <li>
-            <button
-              className='chat-button'
-              onClick={() => {
-          
-              }}
-            >
-              <div>
-                <h3>+ Start a new Chat</h3>
-              </div>
-            </button>
-          </li>
-
+         
           {rooms.map(room => {
              const friendId =
              currentUser?.id === room.user.id

@@ -4,12 +4,15 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import ChatPage from "./Pages/ChatPage";
 import { LogIn } from "./Pages/LogIn";
+import Main from "./Pages/Main";
 import NotFound from "./Pages/NotFound";
 import SignUpPage from "./Pages/SignUpPage";
 import { User } from "./types";
 
 function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [modal, setModal] = useState('')
+  const [users, setUsers] = useState([])
 
   function signIn(data: any) {
     setCurrentUser(data.user);
@@ -49,14 +52,27 @@ function App() {
         <Route index element={<Navigate replace to="/LogIn" />} />
         <Route
           path="/chat-page"
-          element={
-            <ChatPage currentUser={currentUser} logOut={logOut} />
+          element={ <Main
+            modal={modal}
+            currentUser={currentUser}
+            logOut={logOut}
+            users={users}
+            setModal={setModal}
+          />
+            // <ChatPage currentUser={currentUser} logOut={logOut} />
           }
         />
         <Route
           path="/chat-page/:roomId"
           element={
-            <ChatPage currentUser={currentUser} logOut={logOut} />
+            <Main
+              modal={modal}
+              currentUser={currentUser}
+              logOut={logOut}
+              users={users}
+              setModal={setModal}
+            />
+            // <ChatPage currentUser={currentUser} logOut={logOut} />
           }
         />
         <Route path="/LogIn" element={<LogIn signIn={signIn} />} />
